@@ -1,1 +1,38 @@
-got
+# Python
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+
+# oTree
+db.sqlite3
+*.sqlite3
+
+# PyCharm
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# oTree sample apps
+bargaining/
+bertrand/
+common_value_auction/
+cournot/
+dictator/
+guess_two_thirds/
+matching_pennies/
+payment_info/
+prisoner/
+public_goods_simple/
+survey/
+traveler_dilemma/
+trust/
+trust_simple/
+volunteer_dilemma/
+_rooms/
+_templates/
+_static/
+LICENSE
