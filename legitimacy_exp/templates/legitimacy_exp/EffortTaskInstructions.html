@@ -1,0 +1,41 @@
+{{ block title }}Effort Task Instructions{{ endblock }}
+
+{{ block content }}
+
+<div style="border:1px solid #232323; padding:16px; border-radius:3px;
+            margin-bottom:24px;">
+
+    <p><strong>Effort Task Instructions:</strong></p>
+
+    <ul>
+        <li>In the next page, you will complete an effort task
+            through which you will earn income.</li>
+        <li>Each correct answer gives you <strong>1 token</strong>.</li>
+        <li>Your total correct answers determine your income.</li>
+        <li>This income will be used in all the rounds.</li>
+        <li>You will have <strong>{{ effort_timeout }} seconds</strong>
+    to complete as many problems as you can.</li>
+    </ul>
+
+</div>
+
+<div style="border:1px solid #ddd; padding:16px; border-radius:3px;
+            margin-bottom:24px; background:#fff8e1;">
+    <p><strong>The task:</strong></p>
+    <p>You will be shown simple addition problems one at a time,
+       for example:</p>
+    <p style="text-align:center; font-size:1.4em;">
+        <strong>12 + 7 = ?</strong>
+    </p>
+    <p>Type your answer and press <strong>Submit</strong> or hit
+       <strong>Enter</strong>. A new problem will appear immediately.</p>
+</div>
+
+<p style="color:#666;">
+    When you are ready to begin, click Continue.
+    The timer will start on the next page.
+</p>
+
+<button class="btn btn-primary otree-btn-next">Continue</button>
+
+{{ endblock }}

@@ -1,0 +1,34 @@
+{{ block title }}
+    Legitimacy, Transparency, and Compliance in Policy Ultimatums:
+    A Decision-Making Experiment
+{{ endblock }}
+
+{{ block content }}
+
+<!-- Instructions box -->
+<div style="border:1px solid #232323; padding:16px; border-radius:3px;
+            margin-bottom:24px;">
+    <p><strong>Instructions:</strong></p>
+    <ul>
+        <li>You are in a group of 5 participants</li>
+        <li>There are {{ num_rounds }} {{ round_word }}</li>
+        <li>One round will be randomly selected for payment</li>
+        <li>All earnings are in tokens</li>
+    </ul>
+</div>
+
+<!-- Key mechanics box -->
+<div style="border:1px solid #232323; padding:16px; border-radius:3px;
+            margin-bottom:24px;">
+    <p><strong>Key mechanics:</strong></p>
+    <ul>
+        <li>You will complete a task to earn income.</li>
+        <li>40% of income is collected as tax.</li>
+        <li>The tax is used to fund a project.</li>
+        <li>One participant decides how the money is distributed.</li>
+    </ul>
+</div>
+
+<button class="btn btn-primary otree-btn-next">Continue</button>
+
+{{ endblock }}

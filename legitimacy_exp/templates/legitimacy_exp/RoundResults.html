@@ -1,0 +1,85 @@
+{{ block title }}Round {{ player.round_number }} Results{{ endblock }}
+
+{{ block content }}
+
+<!-- Voting outcome -->
+{{ if accepted }}
+<div style="border:2px solid #4CAF50; padding:16px; border-radius:4px;
+            background:#e8f5e9; margin-bottom:16px; text-align:center;">
+    <h3 style="color:#2e7d32; margin:0;">
+        The proposal was ACCEPTED
+    </h3>
+    <p>{{ accept_votes }} members voted to accept,
+       {{ reject_votes }} voted to reject.</p>
+</div>
+{{ else }}
+<div style="border:2px solid #e53935; padding:16px; border-radius:4px;
+            background:#ffebee; margin-bottom:16px; text-align:center;">
+    <h3 style="color:#b71c1c; margin:0;">
+        The proposal was REJECTED
+    </h3>
+    <p>{{ accept_votes }} members voted to accept,
+       {{ reject_votes }} voted to reject.</p>
+</div>
+{{ endif }}
+
+<!-- Payoff breakdown -->
+<table style="width:100%; border-collapse:collapse; margin-bottom:24px;">
+    <tr style="background:#f5f5f5;">
+        <td style="padding:10px; border:1px solid #ddd;">
+            Allocation rule chosen
+        </td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ option_label }}</strong>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:10px; border:1px solid #ddd;">
+            Your after-tax income
+        </td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ after_tax }}</strong> tokens
+        </td>
+    </tr>
+    {{ if accepted }}
+    <tr style="background:#f5f5f5;">
+        <td style="padding:10px; border:1px solid #ddd;">
+            Your allocation from the project fund
+        </td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ allocation }}</strong> tokens
+        </td>
+    </tr>
+    {{ else }}
+    <tr style="background:#f5f5f5;">
+        <td style="padding:10px; border:1px solid #ddd;">
+            Your default refund (proposal rejected)
+        </td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ default_refund }}</strong> tokens
+        </td>
+    </tr>
+    {{ endif }}
+    <tr>
+        <td style="padding:10px; border:1px solid #ddd;">
+            <strong>Your total payoff this round</strong>
+        </td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ round_payoff }}</strong> tokens
+        </td>
+    </tr>
+</table>
+
+{{ if is_last_round }}
+<p style="text-align:center; color:#666;">
+    This was the final round. Click continue to see your payment summary.
+</p>
+{{ else }}
+<p style="text-align:center; color:#666;">
+    Click continue to move to the next round.
+</p>
+{{ endif }}
+
+<button class="btn btn-primary otree-btn-next">Continue</button>
+
+{{ endblock }}

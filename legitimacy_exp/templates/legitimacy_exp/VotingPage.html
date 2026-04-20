@@ -1,0 +1,46 @@
+{{ block title }}Vote on Allocation Decision{{ endblock }}
+
+{{ block content }}
+
+<p>The decision-maker has made the allocation decision.
+   Based on that allocation, please cast your vote.</p>
+
+<!-- What you receive -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px; background:#f9f9f9;">
+    <p>The decision-maker (Participant {{ allocator_id }}) has chosen:
+       <strong>{{ option_label }}</strong></p>
+    <p>In this proposed allocation, you are stated to receive
+       <strong>{{ my_allocation }}</strong> tokens.</p>
+</div>
+
+<!-- Accept vs reject consequences -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    <p>1. If you choose to <strong>ACCEPT</strong> this allocation,
+          you will receive <strong>{{ my_allocation }}</strong> tokens
+          from the project fund.</p>
+    <p>2. If you choose to <strong>REJECT</strong> this allocation,
+          you will receive <strong>{{ default_refund }}</strong> tokens
+          (equal default refund).</p>
+</div>
+
+<!-- Allocator's message -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:24px; background:#fff8e1;">
+    <p>The decision-maker has provided the following message
+       justifying their decision:</p>
+    <p style="font-style:italic;">"{{ message_sent }}"</p>
+</div>
+
+<!-- Vote -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:24px;">
+    <p><strong>Based on the allocation and the reason justifying it,
+       please select one of the following actions:</strong></p>
+    {{ formfield 'accept_vote' }}
+</div>
+
+<button class="btn btn-primary otree-btn-next">Continue</button>
+
+{{ endblock }}

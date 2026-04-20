@@ -1,0 +1,44 @@
+{{ block title }}Comprehension Check{{ endblock }}
+
+{{ block content }}
+
+<p>Before we begin, please answer the following questions to confirm
+   you understand the experiment. You must answer all questions
+   correctly to proceed.</p>
+
+<!-- Question 1 -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    <p><strong>Question 1:</strong>
+       What percentage of your income is collected as tax?</p>
+    {{ formfield 'comp_tax_rate' }}
+</div>
+
+<!-- Question 2 -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    <p><strong>Question 2:</strong>
+       How many votes (out of 4) are needed to accept a proposal?</p>
+    {{ formfield 'comp_votes_needed' }}
+</div>
+
+<!-- Question 3 -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    <p><strong>Question 3:</strong>
+       If the proposal is rejected, what do you receive from the
+       project fund?</p>
+    {{ formfield 'comp_rejection' }}
+</div>
+
+<!-- Question 4 -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    <p><strong>Question 4:</strong>
+       Who decides how the project funds are distributed?</p>
+    {{ formfield 'comp_who_decides' }}
+</div>
+
+{{ next_button }}
+
+{{ endblock }}

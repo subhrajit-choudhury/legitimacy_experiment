@@ -1,0 +1,96 @@
+{{ block title }}Income and Taxation{{ endblock }}
+
+{{ block content }}
+
+<p style="margin-bottom:24px;">
+    Below is a summary of your income from the effort task
+    and how the 40% tax applies to it.
+</p>
+
+<!-- Personal breakdown -->
+<table style="width:100%; border-collapse:collapse; margin-bottom:24px;">
+    <tr style="background:#f5f5f5;">
+        <td style="padding:10px; border:1px solid #ddd;">Your Income</td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ player.income }}</strong> tokens
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:10px; border:1px solid #ddd;">Tax (40%)</td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ player.tax_paid }}</strong> tokens
+        </td>
+    </tr>
+    <tr style="background:#f5f5f5;">
+        <td style="padding:10px; border:1px solid #ddd;">
+            You Keep
+            <small style="color:#666;"> — yours no matter what happens</small>
+        </td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ player.after_tax_income }}</strong> tokens
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:10px; border:1px solid #ddd;">
+            Total Tax Collected from Your Group (R)
+        </td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ common_revenue }}</strong> tokens
+        </td>
+    </tr>
+    <tr style="background:#f5f5f5;">
+        <td style="padding:10px; border:1px solid #ddd;">
+            Total Project Fund if Accepted (T = 2 × R)
+        </td>
+        <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+            <strong>{{ total_pot }}</strong> tokens
+        </td>
+    </tr>
+</table>
+
+<!-- If accepted box -->
+<div style="border:1px solid #ddd; padding:16px; margin-bottom:16px;
+            background:#e8f5e9;">
+    <p><strong>If the proposal is accepted:</strong></p>
+    <p>
+        The project is implemented and the total fund of
+        <strong>{{ total_pot }}</strong> tokens is distributed
+        according to the decision-maker's chosen rule.
+    </p>
+    <p>
+        You are guaranteed your after-tax income of
+        <strong>{{ player.after_tax_income }}</strong> tokens,
+        plus your share of the project fund.
+    </p>
+    <p>
+        Your share will be at least
+        <strong>{{ min_share }}</strong> tokens
+        (if the decision-maker chooses the least favorable option for you)
+        and at most <strong>{{ max_share }}</strong> tokens
+        (if the decision-maker chooses equally).
+    </p>
+</div>
+
+<!-- If rejected box -->
+<div style="border:1px solid #ddd; padding:16px; margin-bottom:16px;
+            background:#fff8e1;">
+    <p><strong>If the proposal is rejected:</strong></p>
+    <p>
+        The project is not implemented. Each participant receives
+        an equal share of the tax revenue:
+        R ÷ 5 = <strong>{{ default_refund }}</strong> tokens.
+    </p>
+</div>
+
+<!-- Reminder -->
+<div style="border:1px solid #ddd; padding:16px; background:#e3f2fd;">
+    <p>
+        You will always keep your after-tax income of
+        <strong>{{ player.after_tax_income }}</strong> tokens,
+        regardless of the outcome.
+    </p>
+</div>
+
+{{ next_button }}
+
+{{ endblock }}

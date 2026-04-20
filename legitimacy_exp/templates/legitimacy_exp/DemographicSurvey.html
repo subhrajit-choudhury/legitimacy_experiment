@@ -1,0 +1,74 @@
+{{ block title }}Demographic Survey{{ endblock }}
+
+{{ block content }}
+
+<p>Please answer the following questions. Your responses are
+   completely anonymous and will only be used for research purposes.</p>
+
+<!-- Age -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'age' }}
+</div>
+
+<!-- Gender -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'gender' }}
+</div>
+
+<!-- Race -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'race' }}
+</div>
+
+<!-- Nationality -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'nationality' }}
+</div>
+
+<!-- Year in school -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'year_in_school' }}
+</div>
+
+<!-- Major -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'major' }}
+</div>
+
+<hr style="margin:24px 0;">
+
+<p><strong>Please indicate your views on the following statements:</strong></p>
+
+<!-- Political orientation -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'political_orientation' }}
+</div>
+
+<!-- Institutional trust -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'institutional_trust' }}
+</div>
+
+<!-- Elected better -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'elected_better' }}
+</div>
+
+<!-- Transparency importance -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:16px;">
+    {{ formfield 'transparency_importance' }}
+</div>
+
+{{ next_button }}
+
+{{ endblock }}

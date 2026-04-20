@@ -1,0 +1,69 @@
+{{ block title }}Waiting for Other Participants{{ endblock }}
+
+{{ block content }}
+
+<p>Please wait while the other participants finish the effort task.
+   The experiment will continue automatically once everyone is done.</p>
+
+<!-- Results summary -->
+<div style="border:1px solid #232323; padding:24px; border-radius:3px;
+            margin-bottom:24px;">
+
+    <p><strong>Your Effort Task Results:</strong></p>
+
+    <table style="width:100%; border-collapse:collapse; margin-bottom:16px;">
+        <tr style="background:#f5f5f5;">
+            <td style="padding:10px; border:1px solid #ddd;">
+                ✓ Correct answers
+            </td>
+            <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+                <strong>{{ count_correct }}</strong>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ddd;">
+                ✗ Incorrect answers
+            </td>
+            <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+                <strong>{{ count_incorrect }}</strong>
+            </td>
+        </tr>
+        <tr style="background:#f5f5f5;">
+            <td style="padding:10px; border:1px solid #ddd;">
+                Your income
+            </td>
+            <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+                <strong>{{ income }}</strong> tokens
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ddd;">
+                Tax (40%)
+            </td>
+            <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+                <strong>{{ tax_paid }}</strong> tokens
+            </td>
+        </tr>
+        <tr style="background:#e8f5e9;">
+            <td style="padding:10px; border:1px solid #ddd;">
+                <strong>You keep (after tax)</strong>
+            </td>
+            <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+                <strong>{{ after_tax }}</strong> tokens
+            </td>
+        </tr>
+    </table>
+
+    <p style="color:#666;">
+        This amount is yours regardless of what happens in the
+        voting stages.
+    </p>
+
+</div>
+
+<!-- Waiting indicator -->
+<div style="text-align:center; padding:16px; color:#666;">
+    <p>⏳ Waiting for other participants to finish...</p>
+</div>
+
+{{ endblock }}

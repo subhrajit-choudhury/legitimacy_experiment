@@ -1,0 +1,85 @@
+{{ block title }}Effort Task{{ endblock }}
+
+{{ block content }}
+
+<div style="text-align:center; margin-bottom: 20px;">
+    <p>Solve as many addition problems as you can before the timer runs out.</p>
+    <p>Each correct answer earns you <strong>1 token</strong>.</p>
+</div>
+
+<div style="text-align:center; font-size: 1.4em; font-weight: bold; margin-bottom: 20px;">
+    Time remaining: <span id="timer">1:00</span>
+</div>
+
+<div style="text-align:center; font-size: 1.6em; margin-bottom: 16px;">
+    <span id="problem">{{ player.numA }} + {{ player.numB }}</span> = ?
+</div>
+
+<div style="text-align:center; margin-bottom: 16px;">
+    <input
+        type="number"
+        id="answer-box"
+        placeholder="Your answer"
+        style="font-size:1.2em; width:120px; text-align:center;"
+        onkeydown="if(event.key==='Enter'){ event.preventDefault(); submitAnswer(); }"
+        autofocus
+    >
+    <button
+        type="button"
+        onclick="submitAnswer()"
+        style="font-size:1.1em; margin-left:10px;">
+        Submit
+    </button>
+</div>
+
+<div style="text-align:center; font-size:1.1em;">
+    <span style="color:green;">✓ Correct: <strong><span id="count-correct">0</span></strong></span>
+    &nbsp;&nbsp;
+    <span style="color:red;">✗ Incorrect: <strong><span id="count-incorrect">0</span></strong></span>
+</div>
+
+<script>
+    const TOTAL_SECONDS = 60;
+    let secondsLeft = TOTAL_SECONDS;
+
+    function updateTimerDisplay() {
+        const mins = Math.floor(secondsLeft / 60);
+        const secs = secondsLeft % 60;
+        document.getElementById('timer').textContent =
+            mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
+
+    const countdown = setInterval(function () {
+        secondsLeft--;
+        updateTimerDisplay();
+
+        if (secondsLeft <= 30) {
+            document.getElementById('timer').style.color = 'red';
+        }
+
+        if (secondsLeft <= 0) {
+            clearInterval(countdown);
+            document.getElementById('answer-box').disabled = true;
+        }
+    }, 1000);
+
+    function submitAnswer() {
+        const box = document.getElementById('answer-box');
+        const val = box.value.trim();
+        if (val === '') return;
+        liveSend(val);
+        box.value = '';
+        box.focus();
+    }
+
+    function liveRecv(data) {
+        document.getElementById('problem').textContent =
+            data.num_a + ' + ' + data.num_b;
+        document.getElementById('count-correct').textContent =
+            data.count_correct;
+        document.getElementById('count-incorrect').textContent =
+            data.count_incorrect;
+    }
+</script>
+
+{{ endblock }}

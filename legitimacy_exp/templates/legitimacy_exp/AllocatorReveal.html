@@ -1,0 +1,108 @@
+{{ block title }}Selection of Decision-Maker{{ endblock }}
+
+{{ block content }}
+
+{{ if player.is_allocator }}
+
+    <div style="border:2px solid #4CAF50; padding:16px; border-radius:4px;
+                background:#e8f5e9; margin-bottom:24px;">
+
+        <p>In your group, the following members have been nominated by the
+           system. Among these members, <strong>YOU</strong> have been
+           selected as the decision-maker for this round.</p>
+
+        <table style="width:100%; border-collapse:collapse; margin:12px 0;">
+            <tr>
+                <th style="padding:8px; border:1px solid #ddd;
+                           text-align:left; background:#f5f5f5;">
+                    Name
+                </th>
+                <th style="padding:8px; border:1px solid #ddd;
+                           text-align:left; background:#f5f5f5;">
+                    Income earned in effort task
+                </th>
+            </tr>
+            {{ for p in all_players }}
+            <tr>
+                <td style="padding:8px; border:1px solid #ddd;">
+                    Participant {{ p.id_in_group }}
+                    {{ if p.id_in_group == allocator_id }}
+                        <strong>(You)</strong>
+                    {{ endif }}
+                </td>
+                <td style="padding:8px; border:1px solid #ddd;">
+                    {{ p.income }} tokens
+                </td>
+            </tr>
+            {{ endfor }}
+        </table>
+
+        <p>
+            <strong>For this round, YOU will decide how the group's
+            shared funds are distributed.</strong>
+        </p>
+        <p>
+            <strong>Your decision will be voted on by the other members
+            of the group.</strong>
+        </p>
+
+        <p style="margin-top:16px; color:#666;">
+            When you are done reading this information, please click continue.
+        </p>
+
+    </div>
+
+{{ else }}
+
+    <div style="border:1px solid #232323; padding:16px; border-radius:4px;
+                margin-bottom:24px;">
+
+        <p>In your group, the following member has been nominated by the
+           system as the decision-maker for this round.</p>
+
+        <table style="width:100%; border-collapse:collapse; margin:12px 0;">
+            <tr>
+                <th style="padding:8px; border:1px solid #ddd;
+                           text-align:left; background:#f5f5f5;">
+                    Name
+                </th>
+                <th style="padding:8px; border:1px solid #ddd;
+                           text-align:left; background:#f5f5f5;">
+                    Income earned in effort task
+                </th>
+            </tr>
+            {{ for p in all_players }}
+            <tr>
+                <td style="padding:8px; border:1px solid #ddd;">
+                    Participant {{ p.id_in_group }}
+                    {{ if p.id_in_group == allocator_id }}
+                        <strong>(Decision-Maker)</strong>
+                    {{ endif }}
+                </td>
+                <td style="padding:8px; border:1px solid #ddd;">
+                    {{ p.income }} tokens
+                </td>
+            </tr>
+            {{ endfor }}
+        </table>
+
+        <p>
+            <strong>For this round, Participant {{ allocator_id }} will
+            decide how the group's shared funds are distributed.</strong>
+        </p>
+        <p>
+            <strong>Their decision will be voted on by the other members
+            of the group.</strong>
+        </p>
+
+        <p style="margin-top:16px; color:#666;">
+            When you are done reading this information, please click continue.
+        </p>
+
+    </div>
+
+{{ endif }}
+
+<button class="btn btn-primary otree-btn-next">Continue</button>
+
+{{ endblock }}

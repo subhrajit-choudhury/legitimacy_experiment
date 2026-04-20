@@ -1,0 +1,143 @@
+{{ block title }}Allocation Decision{{ endblock }}
+
+{{ block content }}
+
+<p>In this step, you will decide how to divide the resources
+   amongst all the members of your group.</p>
+<p>Please choose one of the distribution mechanisms for the
+   group to vote on.</p>
+
+<!-- Hidden fields submitted with the form -->
+<input type="hidden" name="allocation_choice" id="allocation_choice" value="">
+<input type="hidden" name="selected_message"  id="selected_message"  value="">
+
+<!-- ── Three option cards ─────────────────────────────────────── -->
+<div style="display:flex; gap:16px; margin-bottom:24px;">
+
+    <!-- Option 1 -->
+    <div id="card-1" onclick="selectOption(1)"
+         style="flex:1; border:2px solid #ccc; border-radius:6px;
+                padding:16px; cursor:pointer; text-align:center;">
+        <h4 style="margin-top:0;">Option 1</h4>
+        <p><strong>Equal Distribution</strong></p>
+        <p>Everyone receives the same amount of tokens.</p>
+        <hr>
+        <p>You receive: <strong>{{ opt1_each }}</strong> tokens</p>
+        <p>Each other participant receives:
+           <strong>{{ opt1_each }}</strong> tokens</p>
+    </div>
+
+    <!-- Option 2 -->
+    <div id="card-2" onclick="selectOption(2)"
+         style="flex:1; border:2px solid #ccc; border-radius:6px;
+                padding:16px; cursor:pointer; text-align:center;">
+        <h4 style="margin-top:0;">Option 2</h4>
+        <p><strong>Favoring Self</strong></p>
+        <p>You keep half the total fund; the other half is equally
+           divided among the other 4 members.</p>
+        <hr>
+        <p>You receive: <strong>{{ opt2_self }}</strong> tokens</p>
+        <p>Each other participant receives:
+           <strong>{{ opt2_others }}</strong> tokens</p>
+    </div>
+
+    <!-- Option 3 -->
+    <div id="card-3" onclick="selectOption(3)"
+         style="flex:1; border:2px solid #ccc; border-radius:6px;
+                padding:16px; cursor:pointer; text-align:center;">
+        <h4 style="margin-top:0;">Option 3</h4>
+        <p><strong>Effort Based</strong></p>
+        <p>Everyone receives a share based on their effort
+           in the effort task.</p>
+        <hr>
+        {{ for p in opt3_amounts }}
+        <p>
+            {{ if p.is_self }}
+                <strong>You receive: {{ p.amount }} tokens</strong>
+            {{ else }}
+                Participant {{ p.id_in_group }} receives:
+                {{ p.amount }} tokens
+            {{ endif }}
+        </p>
+        {{ endfor }}
+    </div>
+
+</div>
+
+<!-- ── Message section ───────────────────────────────────────── -->
+<div style="border:1px solid #ddd; padding:16px; border-radius:4px;
+            margin-bottom:24px;">
+    <p><strong>You must also choose a reason for your choice:</strong></p>
+
+    <label for="message-select">I am choosing this option because:</label>
+    <select id="message-select" onchange="handleMessageSelect()"
+            style="width:100%; padding:8px; margin-top:8px;
+                   font-size:1em; margin-bottom:12px;">
+        <option value="">-- Select a reason --</option>
+        <option value="Everyone should receive an equal share">
+            Everyone should receive an equal share
+        </option>
+        <option value="I keep some more for me but still share fairly">
+            I keep some more for me but still share fairly
+        </option>
+        <option value="Higher effort deserves more">
+            Higher effort deserves more
+        </option>
+        <option value="This is my offer">
+            This is my offer
+        </option>
+        <option value="custom">
+            Your own response
+        </option>
+    </select>
+
+    <!-- Free text box — only shown when "Your own response" selected -->
+    <div id="custom-message-box" style="display:none;">
+        <label for="custom-text">Enter your reason:</label>
+        <textarea id="custom-text" oninput="handleCustomText()"
+                  style="width:100%; padding:8px; font-size:1em;
+                         margin-top:8px; height:80px;"
+                  placeholder="Type your reason here..."></textarea>
+    </div>
+</div>
+
+<button class="btn btn-primary otree-btn-next">Submit my decision for vote</button>
+
+<script>
+    // ── Option card selection ─────────────────────────────────
+    function selectOption(n) {
+        [1, 2, 3].forEach(function(i) {
+            document.getElementById('card-' + i).style.border =
+                '2px solid #ccc';
+            document.getElementById('card-' + i).style.background =
+                'white';
+        });
+        document.getElementById('card-' + n).style.border =
+            '2px solid #4CAF50';
+        document.getElementById('card-' + n).style.background =
+            '#e8f5e9';
+        document.getElementById('allocation_choice').value = n;
+    }
+
+    // ── Message dropdown ──────────────────────────────────────
+    function handleMessageSelect() {
+        const sel = document.getElementById('message-select').value;
+        const customBox = document.getElementById('custom-message-box');
+
+        if (sel === 'custom') {
+            customBox.style.display = 'block';
+            document.getElementById('selected_message').value = '';
+        } else {
+            customBox.style.display = 'none';
+            document.getElementById('selected_message').value = sel;
+        }
+    }
+
+    // ── Free text input ───────────────────────────────────────
+    function handleCustomText() {
+        const text = document.getElementById('custom-text').value.trim();
+        document.getElementById('selected_message').value = text;
+    }
+</script>
+
+{{ endblock }}

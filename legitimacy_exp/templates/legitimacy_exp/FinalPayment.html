@@ -1,0 +1,45 @@
+{{ block title }}Final Payment{{ endblock }}
+
+{{ block content }}
+
+<p>Thank you for participating in this experiment.</p>
+
+<div style="border:1px solid #ddd; padding:24px; border-radius:4px;
+            margin-bottom:24px; background:#f9f9f9;">
+
+    <p>One round was randomly selected for payment:</p>
+
+    <table style="width:100%; border-collapse:collapse; margin:16px 0;">
+        <tr style="background:#f5f5f5;">
+            <td style="padding:10px; border:1px solid #ddd;">
+                Round selected for payment
+            </td>
+            <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+                <strong>Round {{ paid_round }}</strong>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ddd;">
+                Your payoff from that round
+            </td>
+            <td style="padding:10px; border:1px solid #ddd; text-align:right;">
+                <strong>{{ paid_payoff }}</strong> tokens
+            </td>
+        </tr>
+    </table>
+
+    <p style="font-size:1.1em;">
+        Your total earnings from Round {{ paid_round }}:
+        <strong>{{ paid_payoff }}</strong> tokens.
+    </p>
+
+</div>
+
+<p style="color:#666;">
+    Before we finalize your payment, please answer a short
+    demographic survey on the next page.
+</p>
+
+{{ next_button }}
+
+{{ endblock }}
