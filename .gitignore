@@ -12,3 +12,21 @@ __pycache__/
 .DS_Store
 merge.ps1
 *.otreezip
+
+# Sample apps
+bargaining/
+bertrand/
+common_value_auction/
+cournot/
+dictator/
+guess_two_thirds/
+matching_pennies/
+payment_info/
+prisoner/
+public_goods_simple/
+survey/
+traveler_dilemma/
+trust/
+trust_simple/
+volunteer_dilemma/
+LICENSE
