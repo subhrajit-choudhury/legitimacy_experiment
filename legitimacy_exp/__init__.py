@@ -582,7 +582,7 @@ class AllocationDecision(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.group.allocation_option = player.allocation_choice
-        player.group.message_sent      = player.selected_message
+        player.group.message_sent      = player.selected_messagegit
 
 
 class AllocationWaitPage(WaitPage):
