@@ -7,7 +7,7 @@ N_PLAYERS      = 5
 TAX_RATE       = 0.40
 ALPHA          = 2.0
 N_ROUNDS       = 1
-EFFORT_TIMEOUT = 5
+EFFORT_TIMEOUT = 60
 
 OPTION_LABELS = {
     1: 'Equal Distribution',
